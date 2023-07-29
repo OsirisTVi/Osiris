@@ -1,0 +1,89 @@
+.nav {
+background-color: #181515;
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 10px;
+}
+
+
+.ul {
+list-style: none;
+display: flex;
+margin: 0;
+padding: 0;
+}
+
+
+a {
+color: #fff; 
+text-decoration: none;
+}
+
+
+li {
+margin-right: 15px; /* Добавим отступ справа между элементами */
+margin-left: 15px;
+}
+
+
+
+.input_search {
+background-color: rgb(31, 27, 23);
+width: 400px;
+color: #fff;
+margin-bottom: 0px;
+}
+
+
+
+.searchLi {
+    position: relative;
+  }
+  
+
+.searchIcon {
+position: absolute;
+top: 50%;
+right: 10px;
+transform: translateY(-50%);
+font-size: 18px;
+color: #635b5b;
+pointer-events: none; /* Иконка не будет влиять на кликабельность input */
+}
+
+
+
+li:nth-last-child(2) a {
+    /* Создаем два одинаковых градиента, размещенных рядом */
+    background-image: linear-gradient(45deg, #ff416c, #ff4b2b, #ff4b2b, #ffaf40, #ffde40, #26d0c9, #36b1bf),
+      linear-gradient(45deg, #ff416c, #ff4b2b, #ff4b2b, #ffaf40, #ffde40, #26d0c9, #36b1bf);
+    background-size: 200% 100%; /* Размер градиентов, уменьшен до 200% */
+    background-position: 0% 50%, 100% 50%; /* Начальные позиции градиентов, размещены рядом */
+    background-repeat: no-repeat; /* Отключаем повторение градиентов */
+    animation: gradientAnimation 8s linear infinite; /* Запускаем анимацию */
+    /* Дополнительные стили для улучшения внешнего вида */
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+  
+  /* Анимация для переливающегося градиента */
+  @keyframes gradientAnimation {
+    0% {
+      background-position: 0% 50%, 100% 50%; /* Начальные позиции градиентов, размещены рядом */
+    }
+    50% {
+      background-position: 100% 50%, 0% 50%; /* Переключаемся на конечные позиции градиентов */
+    }
+    100% {
+      background-position: 0% 50%, 100% 50%; /* Возвращаемся к начальным позициям градиентов */
+    }
+  }
+
+
+  
+  .enter_div{
+    margin-bottom: 5px;
+  }
