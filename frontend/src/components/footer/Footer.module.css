@@ -9,6 +9,25 @@ footer {
   }
 
 
-p {
-    color:aliceblue
+h3{
+  color:aliceblue
+}
+
+.services{
+  margin-right: 50%;
+}
+
+
+
+
+.footerContainer {
+  display: flex;
+  justify-content: space-between; 
+  margin: 0 auto; 
+}
+
+/* Установка ширины для каждого элемента */
+.footerContainer > div {
+  width: 33%; /* Занимает 33% ширины контейнера */
+  text-align: center; /* Центрирует текст внутри элементов (по вашему желанию) */
 }

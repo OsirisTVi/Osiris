@@ -5,13 +5,17 @@ import { useSelector } from 'react-redux';
 import { actions } from '../../store/slice/Auth.slice';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { updateTokenThunk } from '../../store/thunk/Update_token.thunk';
 
 
 function Navbar() {
 
   const navigate = useNavigate();
-  const {user} = useSelector(state => state.auth)
+  const {user,loading,authTokens} = useSelector(state => state.auth)
   const dispatch = useDispatch()
+
+
 
 
   const loginGo = () => {
@@ -30,6 +34,29 @@ function Navbar() {
 
     navigate('/');
 };
+
+
+
+
+
+
+
+useEffect( () => {
+
+    let sec_30 = 10000
+
+    let interval =  setInterval(()=> {
+
+
+        if(authTokens){
+
+            dispatch(updateTokenThunk(localStorage.getItem('authTokens')))}
+        },sec_30)
+
+    return () => clearInterval(interval)
+
+
+     },[authTokens])
   
   
 

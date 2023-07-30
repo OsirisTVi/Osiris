@@ -1,0 +1,25 @@
+.image_dropzone {
+    width: 100%;
+    height: 300px; /* Измененный размер */
+    border: 2px dashed #ccc;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 200px; /* Измененный размер */
+    font-size: 16px;
+    color: #999;
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+
+
+  .image {
+    margin: 20px;
+    display: block;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    background-color: white; /* Здесь вы можете изменить цвет фона на белый */
+  }

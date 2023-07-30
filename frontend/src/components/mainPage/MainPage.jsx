@@ -11,33 +11,7 @@ function MainPage() {
 
 
 
-    const dispatch = useDispatch()
-
-    const {user,loading,authTokens} = useSelector(state => state.auth)
-
-
-
-
-    
-
-    useEffect( () => {
-
-        let sec_30 = 30000
-
-        let interval =  setInterval(()=> {
-
-
-            if(authTokens){
-
-
-            
-                dispatch(updateTokenThunk(localStorage.getItem('authTokens')))}
-            },sec_30)
-
-        return () => clearInterval(interval)
-
-    
-         },[authTokens])
+    const {user} = useSelector(state => state.auth)
 
     
 

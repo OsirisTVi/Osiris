@@ -6,6 +6,7 @@ import { updateTokenThunk } from "../thunk/Update_token.thunk";
 
 
 
+
 const initialState = {
     user : localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens')) : null,
     authTokens : localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null,
@@ -23,8 +24,6 @@ const authSlice = createSlice({
 
     reducers: {
 
-        login: (state,{payload: tokens}) => {},
-
         logout:(state) => {
 
             state.authTokens = null
@@ -34,14 +33,6 @@ const authSlice = createSlice({
         
     
             },
-
-
-        register:(state,action) => {},
-
-
-        updateToken:(state,action)=>{},
-
-
     },
 
     extraReducers: (builder) => {
@@ -71,6 +62,7 @@ const authSlice = createSlice({
         .addCase(loginThunk.pending,(state,action) => {
             state.loading = false
             state.status = 'pending'
+            state.error = ''
         })
         .addCase(loginThunk.rejected,(state,action) => {
             state.error = action.payload
@@ -78,6 +70,7 @@ const authSlice = createSlice({
         })
         .addCase(loginThunk.fulfilled,(state,action) => {
 
+            state.error = ''
             state.loading = true,
             state.status = 'done',
             state.user = { 'access_token':action.payload.access,
@@ -94,6 +87,7 @@ const authSlice = createSlice({
                                                 'refresh_token' : action.payload.refresh}))
         })
         .addCase(updateTokenThunk.pending, (state,action) => {
+            state.status = 'pending'
 
         })
         .addCase(updateTokenThunk.rejected, (state,action) => {
