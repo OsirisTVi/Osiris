@@ -1,6 +1,4 @@
 import styles from './Footer.module.css'
-import React, { useEffect } from 'react'
-import $ from 'jquery';
 
 function Footer() {
 

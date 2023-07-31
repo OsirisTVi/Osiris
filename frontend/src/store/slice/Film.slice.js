@@ -30,7 +30,7 @@ const filmSlice = createSlice({
     extraReducers : (builder) => {
 
         builder
-        .addCase(FilmPushDbThunk.pending,(state,action) => {
+        .addCase(FilmPushDbThunk.pending,() => {
 
 
 

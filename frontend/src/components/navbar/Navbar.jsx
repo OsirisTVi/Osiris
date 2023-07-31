@@ -1,18 +1,21 @@
-import React from 'react'
-import style from './Navbar.module.css'
-import { FaSearch } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { actions } from '../../store/slice/Auth.slice';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { updateTokenThunk } from '../../store/thunk/Update_token.thunk';
+import style from './Navbar.module.css'
+import { FaSearch } from 'react-icons/fa';
+
+
+
+
 
 
 function Navbar() {
 
   const navigate = useNavigate();
-  const {user,loading,authTokens} = useSelector(state => state.auth)
+  const {user,authTokens} = useSelector(state => state.auth)
   const dispatch = useDispatch()
 
 

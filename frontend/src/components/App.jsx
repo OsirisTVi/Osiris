@@ -1,14 +1,10 @@
-import { useState } from 'react'
-import style from './App.module.css'
 import Navbar from './navbar/navbar'
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
-import Register from './register/Register';
 import Footer from './footer/Footer';
 import RegisterForm from './form/registerForm/RegisterForm'
 import MainPage from './mainPage/MainPage';
 import LoginForm from './form/LoginForm/LoginForm';
 import InterfaceAddFilmPrivate from './interfaceAddFilmPrivate/InterfaceAddFilmPrivate';
-import PrivateRoute from './privateRoutes/AddFIlmPrivateRoute';
 
 
 

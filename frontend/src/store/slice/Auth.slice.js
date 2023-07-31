@@ -38,7 +38,7 @@ const authSlice = createSlice({
     extraReducers: (builder) => {
 
         builder
-        .addCase(registerThunk.pending,(state,action) => {
+        .addCase(registerThunk.pending,(state) => {
             state.status = 'loading'
             state.error = ''
         })
@@ -59,7 +59,7 @@ const authSlice = createSlice({
 
         
         })
-        .addCase(loginThunk.pending,(state,action) => {
+        .addCase(loginThunk.pending,(state) => {
             state.loading = false
             state.status = 'pending'
             state.error = ''
@@ -86,7 +86,7 @@ const authSlice = createSlice({
             localStorage.setItem('authTokens' , JSON.stringify({'access_token' : action.payload.access,
                                                 'refresh_token' : action.payload.refresh}))
         })
-        .addCase(updateTokenThunk.pending, (state,action) => {
+        .addCase(updateTokenThunk.pending, (state) => {
             state.status = 'pending'
 
         })

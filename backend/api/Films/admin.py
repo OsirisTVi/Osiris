@@ -1,3 +1,11 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import (Film,
+                     AllGenres,
+                     AllCountry)
+
+
+
+@admin.register(Film,AllGenres,AllCountry)
+class FilmRegister(admin.ModelAdmin):
+    pass
