@@ -15,6 +15,7 @@ class ErrorSerializer(serializers.Serializer):
 
 class FilmSerializer(serializers.ModelSerializer):
 
+    
     class Meta:
 
         model = Film

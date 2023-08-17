@@ -1,0 +1,28 @@
+.userAvatar {
+
+    width: 150px;
+    height: 150px;
+}
+
+
+
+.borderUserProfile {
+    border: 2px solid white;
+    padding: 20px;
+    position: relative;
+
+  }
+
+
+  .changeUserProfile {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 110px;
+    margin-right: 20px;
+  }
+
+
+  label {
+    display: block;
+  }

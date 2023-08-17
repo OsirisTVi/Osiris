@@ -1,8 +1,6 @@
-import React from 'react'
 import styles from './LoginForm.module.css'
 import { useDispatch, useSelector } from 'react-redux';
-import { loginThunk } from '../../../store/thunk/Login.thunk';
-import { actions } from '../../../store/slice/Auth.slice';
+import { loginThunk } from '../../../store/authThunk/Login.thunk';
 import { Navigate } from 'react-router-dom';
 
 
@@ -10,26 +8,22 @@ import { Navigate } from 'react-router-dom';
 
 const LoginForm = () => {
 
-    const { user } = useSelector(state => state.auth)
+    const { user,loading } = useSelector(state => state.auth)
     const dispatch = useDispatch()
 
     async function handleLoginFormSubmit(event) {
         event.preventDefault();
 
-        const username = event.target.login.value
+        const email = event.target.email.value
         const password = event.target.password.value
 
         const credentialsData = {
-            username: username,
+            username: email,
             password: password
         }
 
-
-        
-
-
-        const action = await dispatch(loginThunk(credentialsData));
-        const tokens = action.payload;
+    
+        await dispatch(loginThunk(credentialsData));
     }
 
 
@@ -39,11 +33,13 @@ const LoginForm = () => {
         <>
             {user ? (<Navigate to="/" />) :
                 (
-                    <div className={styles.div_registration}>
+                    
+                    <div className={styles.div_registration}> 
                         <form className={styles.form} onSubmit={handleLoginFormSubmit}>
                             <h2 className={styles.enter_label}>Авторизация</h2>
-                            <label htmlFor="login">Логин:</label>
-                            <input type="text" id="login" name="login" required />
+                            <label htmlFor="email">Электронная почта:</label>
+                            <input type="email" id="email" name="email" required />
+
 
                             <label htmlFor="password">Пароль:</label>
                             <input type="password" id="password" name="password" required />
@@ -51,6 +47,8 @@ const LoginForm = () => {
                             <button type="submit">Войти</button>
                             <button type="button">Забыл пароль?</button>
                         </form>
+
+                        {!loading ? <h1>Неверный логин или пароль</h1> : ''}
                     </div>
                 )}
         </>

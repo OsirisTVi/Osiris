@@ -5,6 +5,7 @@ import RegisterForm from './form/registerForm/RegisterForm'
 import MainPage from './mainPage/MainPage';
 import LoginForm from './form/LoginForm/LoginForm';
 import InterfaceAddFilmPrivate from './interfaceAddFilmPrivate/InterfaceAddFilmPrivate';
+import MyUserProfile from './profile/MyUserProfile';
 
 
 
@@ -30,6 +31,8 @@ function App() {
             <Route path="/login" element={<LoginForm/>} /> 
             <Route path="/register" element={<RegisterForm/>}/>
             <Route path='/private' element={<InterfaceAddFilmPrivate/>}/>
+            <Route path="/profile" element={<MyUserProfile/>}/>
+
 
 
           </Routes>

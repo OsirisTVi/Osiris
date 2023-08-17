@@ -3,7 +3,7 @@ background-color: #181515;
 display: flex;
 align-items: center;
 justify-content: space-between;
-padding: 10px;
+padding: 15px;
 }
 
 
@@ -30,7 +30,7 @@ margin-left: 15px;
 
 .input_search {
 background-color: rgb(31, 27, 23);
-width: 400px;
+width: 300px;
 color: #fff;
 margin-bottom: 0px;
 }
@@ -87,3 +87,21 @@ li:nth-last-child(2) a {
   .enter_div{
     margin-bottom: 5px;
   }
+
+
+
+
+
+
+  .buttonContainer {
+    display: flex;
+    width: 100px;
+  }
+
+
+  .mainPageButtonContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -15px; /* Добавьте отступ сверху, чтобы создать расстояние между блоками */
+  }
+

@@ -8,11 +8,11 @@
   }
 
 
-h2 {
 
-    color: aliceblue;
+
+h1, h2, h3, h4, h5{
+    color:aliceblue
 }
-
 
 
 
@@ -61,4 +61,10 @@ transform: translateY(1px); /* Подпрыгивание на 2 пикселя 
 .enter_label{
     margin-bottom: 20px;
     color: aliceblue;
+}
+
+
+.errors {
+
+    color: #f3eff1;
 }

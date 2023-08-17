@@ -1,16 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { FilmPushDbThunk } from "../filmThunk/FilmPushDb.thunk";
+import { FilmsRetrieveThunk } from "../filmThunk/FilmsRetrieve.thunk";
 
 
 
-const initialState = {
-    filmToPushDataBase :  {
-        country : null,
-        name : null,
-        images : [],
-        genres : [],
+const initialStateFilm = {
+    
+    // filmToPushDataBase :  {
+    //     country : null,
+    //     name : null,
+    //     images : [],
+    //     genres : [],
 
-    }
+    // },
+
+    filmObjects : []
         
 
 
@@ -21,7 +25,7 @@ const initialState = {
 
 const filmSlice = createSlice({
     name : 'film',
-    initialState : initialState,
+    initialState : initialStateFilm,
     reducers : {},
 
 
@@ -31,9 +35,29 @@ const filmSlice = createSlice({
 
         builder
         .addCase(FilmPushDbThunk.pending,() => {
+        })
 
 
 
+
+
+        .addCase(FilmsRetrieveThunk.pending,(state) => {
+
+
+        
+        })
+        .addCase(FilmsRetrieveThunk.rejected,(state,action) => {
+
+
+        
+        })
+        .addCase(FilmsRetrieveThunk.fulfilled,(state,action) => {
+            
+
+            state.filmObjects = action.payload
+
+
+        
         })
 
 
@@ -43,4 +67,4 @@ const filmSlice = createSlice({
 
 
 
-export const {reducer,actions} = filmSlice
+export const {reducer : filmReducer, actions : filmActions} = filmSlice

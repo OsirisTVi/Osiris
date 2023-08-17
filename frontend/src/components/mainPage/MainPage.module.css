@@ -1,0 +1,37 @@
+.filmPoster {
+
+    width: 300px;
+    height: 300px;
+}
+
+
+.countryFilm{
+    color:aliceblue;
+}
+
+
+.containerPoster {
+
+    display: flex;
+    margin: 10px 10px 10px 10px;
+}
+
+
+.containerFilm {
+    margin-left: 20px;
+}
+
+
+.yearFilm{
+    color:aliceblue;
+    font-size: 20px;
+    
+}
+
+
+
+.nameFilm {
+
+    color:aliceblue
+
+}

@@ -1,21 +1,17 @@
 import { useSelector } from 'react-redux';
-import { actions } from '../../store/slice/Auth.slice';
+import { authActions } from '../../store/slice/Auth.slice';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
-import { updateTokenThunk } from '../../store/thunk/Update_token.thunk';
+// import { updateTokenThunk } from '../../store/thunk/Update_token.thunk';
 import style from './Navbar.module.css'
 import { FaSearch } from 'react-icons/fa';
-
-
-
-
+import { userProfileThunk } from '../../store/userThunk/UserProfile.thunk';
 
 
 function Navbar() {
 
   const navigate = useNavigate();
-  const {user,authTokens} = useSelector(state => state.auth)
+  const {user} = useSelector(state => state.auth)
   const dispatch = useDispatch()
 
 
@@ -25,17 +21,42 @@ function Navbar() {
     navigate('/login');
   };
 
+
+
+
   const registerGo = () => {
 
     navigate('/register')
 
   }
 
+
+  const handleMainPage =() => {
+
+    navigate('/')
+  }
+
+
+
+
   const handleLogout = () => {
     
-    dispatch(actions.logout());
-
+    dispatch(authActions.logout());
     navigate('/');
+};
+
+
+
+const handleUserProfile = async () => {
+
+
+  try {
+    navigate('/profile/');
+  } catch (error) {
+    console.error('Error fetching user profile:', error);
+  }
+
+    
 };
 
 
@@ -44,28 +65,10 @@ function Navbar() {
 
 
 
-useEffect( () => {
-
-    let sec_30 = 10000
-
-    let interval =  setInterval(()=> {
-
-
-        if(authTokens){
-
-            dispatch(updateTokenThunk(localStorage.getItem('authTokens')))}
-        },sec_30)
-
-    return () => clearInterval(interval)
-
-
-     },[authTokens])
-  
-  
 
 
   return (
-    <div>
+    <div className={style.navbarContainer}>
 
         <nav className={style.nav}>
         <ul className={style.ul}>
@@ -83,7 +86,18 @@ useEffect( () => {
             </li>
             <li><a>Смотреть 60 дней бесплатно</a></li>
 
-            {user ? (<li><button onClick={handleLogout} >Выход</button></li>) : (
+            {user ? ( <div>
+
+              <div className={style.mainPageButtonContainer}>
+                    <li><button onClick={handleMainPage}>Главная</button></li>
+                    </div>
+              
+                     <div className={style.buttonContainer}>
+                      <li><button onClick={handleLogout} >Выход</button></li>
+                    <li><button onClick={handleUserProfile}>Профиль</button></li>
+                    </div>
+
+                    </div>) : (
               <div className={style.enter_div}>
 
             <li><button onClick={loginGo}>Войти</button></li> 

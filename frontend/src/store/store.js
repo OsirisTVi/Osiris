@@ -1,12 +1,14 @@
 import {configureStore,combineReducers } from '@reduxjs/toolkit'
-import {reducer as authReducer} from './slice/Auth.slice.js'
-import {reducer as filmReducer} from './slice/Film.slice.js'
+import {authReducer} from './slice/Auth.slice.js'
+import {filmReducer} from './slice/Film.slice.js'
+import {userProfileReducer } from './slice/UserProfile.slice.js'
 import thunk from 'redux-thunk'
 
 const allReducers = combineReducers({
 
     auth : authReducer,
-    film : filmReducer
+    film : filmReducer,
+    userProfile:userProfileReducer
 })
 
 

@@ -5,7 +5,4 @@ from .views import (FilmsRetrieveApiView,
 
 urlpatterns = [
 
-    path('films/',FilmsRetrieveApiView.as_view(),name='films')
-
-
-]
+    path('allFilms/',FilmsRetrieveApiView.as_view(),name='films')]

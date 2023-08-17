@@ -1,7 +1,12 @@
 from rest_framework import serializers
 from .validators import RegisterValidator
 from rest_framework.exceptions import ValidationError
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
+from .services.authService import RegisterService
+from .models import UserProfile
+
+
+User = get_user_model()
 
 
 
@@ -11,11 +16,12 @@ from django.contrib.auth.models import User
 
 class RegistrationSerializer(serializers.Serializer):
 
-    username = serializers.CharField()
+    email = serializers.CharField()
     password = serializers.CharField(write_only=True)
     repeat_password = serializers.CharField(write_only=True)
+    username = serializers.CharField(write_only=True)
     access_token = serializers.CharField(read_only=True)
-    refresh_token = serializers.CharField(read_only=True)
+    refresh_token = serializers.CharField(write_only=True,required=False)
 
 
 
@@ -36,18 +42,35 @@ class RegistrationSerializer(serializers.Serializer):
 
 
     def create(self, validated_data):
+
+
+       user_init = RegisterService(validated_data)
+       return user_init.register()
         
-        username = validated_data.get('username')
-        password = validated_data.get('password')
-
-        user = User.objects.create(username=username)
-        user.set_password(password)
-
-        user.save()
-        
+    
 
 
-        return user
+
+
+class UserProfileSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = UserProfile
+        fields = '__all__'
+
+
+
+    def update(self, instance, validated_data):
+
+
+        instance.age = validated_data.get('age', instance.age)
+
+
+        instance.save()
+        return instance
+
+
+
     
 
 
